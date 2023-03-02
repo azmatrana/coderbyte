@@ -1,3 +1,14 @@
+/*
+Refactored notes.
+
+- added a separate function to getCandidateByEvent so that all the logic to get a candidate from the event can be encapsulated.
+- added a separate function to getCandidate after selection from the event checks.
+- added updateCrypt function to create a hash. Because this code was repeated, we can move it to a function.
+- changed some if-else conditions to a single line if conditions as refactoring.
+- added some test cases related to the function getCandidate so that it is well-tested.
+- we can also add tests for the getCandidateByEvent function as well to validate its functionality.
+*/
+
 const crypto = require("crypto");
 
 exports.deterministicPartitionKey = (event) => {
@@ -7,7 +18,7 @@ exports.deterministicPartitionKey = (event) => {
 
   if (event) candidate = getCandidateByEvent(event);
 
-  candidate = getCandidate(candidate) || TRIVIAL_PARTITION_KEY
+  candidate = getCandidate(candidate) || TRIVIAL_PARTITION_KEY; // default value of cadidate will be assigned as TRIVIAL_PARTITION_KEY.
 
   if (candidate.length > MAX_PARTITION_KEY_LENGTH) candidate = updateCrypt(candidate);
 
@@ -24,6 +35,7 @@ function getCandidateByEvent(event){
 
   return candidate;
 }
+
 
 function getCandidate(data)
 {
