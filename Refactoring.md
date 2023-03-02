@@ -9,3 +9,11 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+### Refactored notes.
+- added a separate function to getCandidateByEvent so that all the logic to get a candidate from the event can be encapsulated.
+- added a separate function to getCandidate after selection from the event checks.
+- added updateCrypt function to create a hash. Because this code was repeated, we can move it to a function.
+- changed some if-else conditions to a single line if conditions as refactoring.
+- added some test cases related to the function getCandidate so that it is well-tested.
+- we can also add tests for the getCandidateByEvent function as well to validate its functionality.
